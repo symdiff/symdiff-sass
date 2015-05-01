@@ -1,5 +1,5 @@
 var sass = require('node-sass'),
-    symdiffCSS = require('../symdiff-css');
+    symdiffCSS = require('symdiff-css');
 
 function symdiffSASS(sassString) {
     var compiled;
