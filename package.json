@@ -1,0 +1,19 @@
+{
+  "name": "symdiff-sass",
+  "version": "0.0.1",
+  "description": "Extracts all classes from a SASS file.",
+  "main": "index.js",
+  "dependencies": {
+    "node-sass": "2.1.1",
+    "symdiff-css": "0.0.2"
+  },
+  "devDependencies": {
+    "chai": "2.3.0",
+    "mocha": "2.2.4"
+  },
+  "scripts": {
+    "test": "mocha -r test/chai.js test/*.test.js"
+  },
+  "author": "Nikolaus Piccolotto <hello@npiccolotto.com>",
+  "license": "MIT"
+}
