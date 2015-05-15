@@ -8,7 +8,7 @@ describe('symdiff-sass', function() {
         });
 
         it('should work with invalid scss', function() {
-            var result = extract('this is not the scss you are looking for');
+            var result = extract('.grid {');
             expect(result.length).to.equal(0);
         });
 
@@ -18,6 +18,13 @@ describe('symdiff-sass', function() {
 
             expect(result.length).to.equal(1);
             expect(result[0]).to.equal('grid');
+        });
+
+        it('should extract two classes', function() {
+            var testSCSS = '.grid.gird { display: flex; }',
+                result = extract(testSCSS);
+
+            expect(result.length).to.equal(2);
         });
 
         it('should extract nested classes', function() {
@@ -42,7 +49,7 @@ describe('symdiff-sass', function() {
         });
 
         it('should work with invalid sass', function() {
-            var result = extract('this is not the sass you are looking for');
+            var result = extract('.grid {');
             expect(result.length).to.equal(0);
         });
 
@@ -52,6 +59,13 @@ describe('symdiff-sass', function() {
 
             expect(result.length).to.equal(1);
             expect(result[0]).to.equal('grid');
+        });
+
+        it('should extract two classes', function() {
+            var testSASS = '.grid.gird\n  display: flex',
+                result = extract(testSASS);
+
+            expect(result.length).to.equal(2);
         });
 
         it('should extract nested classes', function() {
