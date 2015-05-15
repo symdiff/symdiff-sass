@@ -1,5 +1,4 @@
-var sass = require('node-sass'),
-    gonzales = require('gonzales-pe'),
+var gonzales = require('gonzales-pe'),
     symdiffCSS = require('symdiff-css');
 
 function walk(node, fn) {
