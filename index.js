@@ -14,13 +14,13 @@ function symdiffSASS(sassString) {
     try {
         // try SCSS first
         ast = gonzales.parse(sassString, {
-            syntax: 'SCSS'
+            syntax: 'scss'
         });
     } catch(err1) {
         try {
             // try SASS second
             ast = gonzales.parse(sassString, {
-                syntax: 'SASS'
+                syntax: 'sass'
             });
         } catch(err2) {
             // ok whatever
