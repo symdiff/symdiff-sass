@@ -1,5 +1,9 @@
 var gonzales = require('gonzales-pe');
 
+function dedup(c, i, all) {
+    return all.lastIndexOf(c) === i;
+}
+
 function walk(node, fn) {
     fn(node);
     if (node.content && node.content.forEach) {
@@ -38,7 +42,7 @@ function symdiffSASS(sassString) {
             });
         }
     });
-    return classes;
+    return classes.filter(dedup);
 }
 
 module.exports = symdiffSASS;
