@@ -1,6 +1,6 @@
 {
   "name": "symdiff-sass",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Extracts all classes from a SASS file.",
   "main": "index.js",
   "repository": {
