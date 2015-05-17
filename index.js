@@ -1,16 +1,44 @@
-var sass = require('node-sass'),
-    symdiffCSS = require('symdiff-css');
+var gonzales = require('gonzales-pe');
+
+function walk(node, fn) {
+    fn(node);
+    if (node.content && node.content.forEach) {
+        node.content.forEach(function(child) {
+            walk(child, fn);
+        });
+    }
+}
 
 function symdiffSASS(sassString) {
-    var compiled;
+    var ast;
     try {
-        compiled =  sass.renderSync({
-                        data: sassString
-                    });
-    } catch(e) {
-        return [];
+        // try SCSS first
+        ast = gonzales.parse(sassString, {
+            syntax: 'scss'
+        });
+    } catch(err1) {
+        try {
+            // try SASS second
+            ast = gonzales.parse(sassString, {
+                syntax: 'sass'
+            });
+        } catch(err2) {
+            // ok whatever
+            return [];
+        }
     }
-    return symdiffCSS(compiled.css);
+
+    var classes = [];
+    walk(ast, function(node) {
+        if (node.type === 'class') {
+            node.content.forEach(function(clazzContent) {
+                if (clazzContent.type === 'ident') {
+                    classes.push(clazzContent.content);
+                }
+            });
+        }
+    });
+    return classes;
 }
 
 module.exports = symdiffSASS;

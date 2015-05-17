@@ -1,6 +1,6 @@
 {
   "name": "symdiff-sass",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Extracts all classes from a SASS file.",
   "main": "index.js",
   "repository": {
@@ -12,8 +12,7 @@
   },
   "homepage": "https://symdiff.github.io",
   "dependencies": {
-    "node-sass": "2.1.1",
-    "symdiff-css": "0.0.3"
+    "gonzales-pe": "^3.0.0-27"
   },
   "devDependencies": {
     "chai": "2.3.0",
